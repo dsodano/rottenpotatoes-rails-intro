@@ -17,6 +17,10 @@ class MoviesController < ApplicationController
     elsif params[:sort_by] == 'release_date'
       @release_date_header = 'hilite'
     end
+    if params[:ratings]
+      @movies = Movie.where(:rating => params[:ratings].keys)
+    end
+    @all_ratings = Movie.all_ratings
   end
 
   def new
