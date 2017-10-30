@@ -26,7 +26,8 @@ class MoviesController < ApplicationController
     end
     
     if params[:sort_by].nil?
-      @sort_by = session[:sort_by]
+      params[:sort_by] = session[:sort_by]
+      redirect_to movies_path(params) and return
     else
       @sort_by = params[:sort_by]
       session[:sort_by] = params[:sort_by]
